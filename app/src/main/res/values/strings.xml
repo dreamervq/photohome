@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">PhotoHome</string>
+    <string name="home">探索</string>
+    <string name="me">我的</string>
+    <string name="pics">图集</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
