@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cn.bmob.v3.Bmob;
 import drysister.itcast.cn.photohome.adapter.MyFragmentPagerAdapter;
 
 public class MainActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener,ViewPager.OnPageChangeListener{
@@ -34,9 +35,9 @@ private MyFragmentPagerAdapter mAdapter;
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         mAdapter=new MyFragmentPagerAdapter(getSupportFragmentManager());
-
         bindView();
         rbFind.setChecked(true);
+        Bmob.initialize(this,"65768cbe896b0c1626487bf6aefd6fdd");
     }
 
     private void bindView() {
@@ -62,12 +63,15 @@ if(i==2){
     switch (vpager.getCurrentItem()){
         case PAGE_ONE:
             rbFind.setChecked(true);
+            txtTopbar.setText("首页");
             break;
         case PAGE_TWO:
             rbPics.setChecked(true);
+            txtTopbar.setText("图库");
             break;
         case PAGE_THREE:
             rbMe.setChecked(true);
+            txtTopbar.setText("我的");
             break;
     }
 }
@@ -78,12 +82,15 @@ if(i==2){
 switch (checkedId){
     case R.id.rb_find:
         vpager.setCurrentItem(PAGE_ONE);
+        txtTopbar.setText("首页");
         break;
     case R.id.rb_pics:
         vpager.setCurrentItem(PAGE_TWO);
+        txtTopbar.setText("图库");
         break;
     case R.id.rb_me:
         vpager.setCurrentItem(PAGE_THREE);
+        txtTopbar.setText("我的");
         break;
 }
     }

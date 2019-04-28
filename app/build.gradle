@@ -23,6 +23,7 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     implementation 'com.android.support:support-v4:28.0.0'
+    implementation 'com.android.support:design:28.0.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
@@ -34,4 +35,19 @@ dependencies {
     //add glide
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+    //CDN文件服务使用okhttp相关包进行文件的上传和下载（必填）
+    implementation 'cn.bmob.android:bmob-sdk:3.6.9-rc2'
+    implementation "io.reactivex.rxjava2:rxjava:2.2.2"
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+    implementation 'com.squareup.okio:okio:2.1.0'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.squareup.okhttp3:okhttp:3.12.0'
+    implementation 'cn.bmob.android:http-legacy:1.0'
+    //butter knife
+    implementation 'com.jakewharton:butterknife:8.6.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'
+    // pull to refresh
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-22'
+    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-22'//没有使用特殊Header，可以不加这行
+    //compile 'com.android.support:appcompat-v7:25.3.1'//版本 23以上（必须）
 }

@@ -20,11 +20,6 @@
         android:textColor="@color/colorblack"
         android:textSize="18sp" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2px"
-        android:layout_alignParentBottom="true"
-        android:background="@color/colorWhite" />
 
 </RelativeLayout>
     <RadioGroup
