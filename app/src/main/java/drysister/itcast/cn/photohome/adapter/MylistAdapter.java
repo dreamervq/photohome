@@ -27,6 +27,7 @@ import java.net.ProtocolException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 import drysister.itcast.cn.photohome.R;
 import drysister.itcast.cn.photohome.async.ImageTas;
@@ -36,13 +37,17 @@ public class MylistAdapter extends BaseAdapter {
     private LinkedList<News> mData;
     private Context mcontext;
 
-private Bitmap tempBit;
     public MylistAdapter(LinkedList<News> mData, Context context) {
         this.mData = mData;
         this.mcontext = context;
 
     }
-
+public void  addItem(List<News> list){
+        for(int i=0;i<list.size();i++){
+            mData.add(list.get(i));
+        }
+        this.notifyDataSetChanged();
+}
     @Override
     public int getCount() {
         return mData.size();
@@ -77,7 +82,7 @@ private Bitmap tempBit;
 
         Glide
                 .with(mcontext)
-                .load(mData.get(position).getMainpic().getUrl())
+                .load(mData.get(position).getMainpic())
                 .centerCrop()
                 .placeholder(R.drawable.loading)
                 .into(holder.img_icon);

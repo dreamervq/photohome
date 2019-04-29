@@ -106,6 +106,10 @@ NewsTask newsTask;
         myRefresh.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                newspage=0;
+                allNews.clear();
+                newsTask=new NewsTask();
+                newsTask.execute();
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     @Override
@@ -113,12 +117,15 @@ NewsTask newsTask;
                         myRefresh.finishRefresh();
                         myRefresh.setEnableLoadMore(true);
                     }
-                }, 2000);
+                }, 1100);
             }
         });
         myRefresh.setOnLoadMoreListener(new OnLoadMoreListener() {
             @Override
             public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+                newspage++;
+                newsTask=new NewsTask();
+newsTask.execute();
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     @Override
@@ -126,7 +133,7 @@ NewsTask newsTask;
                         myRefresh.finishLoadMore();
                         myRefresh.setEnableLoadMore(true);
                     }
-                }, 2000);
+                }, 1200);
             }
         });
         myRefresh.setEnableLoadMore(true);
@@ -168,8 +175,10 @@ NewsTask newsTask;
                     public void OnBannerClick(int position) {
                         Intent it1 = new Intent(getActivity(), ActivityBanner.class);
                         it1.putExtra("bannerUrl", bannerUrl.get(position));
+                        getActivity().overridePendingTransition(R.anim.inact,R.anim.outact);
                         startActivity(it1);
-                        Toast.makeText(getContext(), "你点了第" + (position + 1) + "张轮播图", Toast.LENGTH_SHORT).show();
+
+                        //Toast.makeText(getContext(), "你点了第" + (position + 1) + "张轮播图", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .start();
@@ -253,21 +262,33 @@ NewsTask newsTask;
         protected Void doInBackground(Void... voids) {
             BmobQuery<News> query = new BmobQuery<>();
             //query data
-            query.setLimit(4).order("-hots").findObjects(new FindListener<News>() {
+            query.setLimit(5).setSkip(5*newspage).order("-hots").findObjects(new FindListener<News>() {
                 @Override
                 public void done(List<News> list, BmobException e) {
                     if (e == null) {
+                        if (list.size()==0){
+                            Toast.makeText(mContext, "没有更多了！！", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        if(newspage>0){
+                            Log.i("load more", "done: list size"+list.size());
+                            mAdapter.addItem(list);
+                        }
                         int i = 0;
                         while (i < list.size()) {
                             allNews.add(list.get(i));
                             i++;
-
                         }
                     } else {
                     }
                     Log.i("allbmob", Integer.toString(allNews.size()));
-                    mAdapter = new MylistAdapter(allNews, mContext);
-                    listViewid.setAdapter(mAdapter);
+
+                    if (newspage==0){
+
+                        mAdapter = new MylistAdapter(allNews, mContext);
+                        listViewid.setAdapter(mAdapter);
+
+                    }
                     setListViewHeightBasedOnChildren(listViewid);
                 }
             });
@@ -275,6 +296,12 @@ NewsTask newsTask;
 //end get pic bitmap
 
             return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+
+            super.onPostExecute(aVoid);
         }
     }//end task
 

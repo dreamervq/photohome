@@ -13,6 +13,12 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <!-- 允许读取手机状态 用于创建BmobInstallation -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- 写入SD卡的权限：如果你希望保存相机拍照后的照片 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!-- 读取SD卡的权限:打开相册选取图片所必须的权限 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -30,12 +36,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".releaseActivity" />
+
+
 
         <provider
             android:name="cn.bmob.v3.util.BmobContentProvider"
             android:authorities="drysister.itcast.cn.photohome.BmobContentProvider" />
 
-        <activity android:name=".ActivityBanner"></activity>
+        <activity android:name=".ActivityBanner" />
+
     </application>
 
 </manifest>

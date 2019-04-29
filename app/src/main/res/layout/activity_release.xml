@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".releaseActivity"
+    android:background="@color/whiteBackground">
+
+    <RelativeLayout
+        android:id="@+id/news_bar"
+        android:layout_width="match_parent"
+        android:layout_height="48dp">
+
+        <ImageView
+            android:id="@+id/backHome"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="8dp"
+            android:src="@mipmap/back" />
+
+        <TextView
+            android:id="@+id/txt_newsbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="发布到首页"
+
+            android:textColor="@color/textColor"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/clearAll"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="14dp"
+            android:src="@mipmap/clear" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/news_bar"
+        android:orientation="vertical"
+        android:background="@color/nesBg">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="起个标题吧"
+            android:textColor="@color/textColor"
+            android:layout_marginTop="14dp"
+            android:gravity="center"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:id="@+id/newTitle"
+            android:textColor="@color/textColor"
+            android:layout_margin="8dp"
+            android:hint="..."
+            android:background="@color/editBg"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="来吧，尽情发挥吧..."
+            android:textColor="@color/textColor"
+            android:layout_marginTop="18dp"
+            android:gravity="center"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="138dp"
+            android:id="@+id/newContent"
+            android:textColor="@color/textColor"
+            android:layout_margin="8dp"
+            android:hint=""
+            android:background="@color/editBg"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="17dp"
+            android:orientation="horizontal"
+            android:layout_margin="8dp">
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:id="@+id/contentPic1"
+                android:layout_height="72dp"
+                android:src="@mipmap/addpic"
+                android:scaleType="fitCenter"
+                android:alpha="0.65"/>
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="72dp"
+                android:src="@mipmap/addpic"
+                android:id="@+id/contentPic2"
+                android:scaleType="fitCenter"
+                android:visibility="invisible"
+                android:alpha="0.65"/>
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="72dp"
+                android:src="@mipmap/addpic"
+                android:id="@+id/contentPic3"
+                android:scaleType="fitCenter"
+                android:visibility="invisible"
+                android:alpha="0.65"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="8dp">
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="72dp"
+                android:src="@mipmap/addpic"
+                android:visibility="invisible"
+                android:id="@+id/contentPic4"
+                android:scaleType="fitCenter"
+                android:alpha="0.65"/>
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="72dp"
+                android:src="@mipmap/addpic"
+                android:scaleType="fitCenter"
+                android:id="@+id/contentPic5"
+                android:visibility="invisible"
+                android:alpha="0.65"/>
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="72dp"
+                android:src="@mipmap/addpic"
+                android:scaleType="fitCenter"
+                android:id="@+id/contentPic6"
+                android:visibility="invisible"
+                android:alpha="0.65"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+    <ImageView
+        android:id="@+id/submitAll"
+        android:layout_width="wrap_content"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="12dp"
+        android:src="@mipmap/submit" />
+
+
+</RelativeLayout>

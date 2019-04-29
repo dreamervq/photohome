@@ -19,7 +19,14 @@
         android:text="首页"
         android:textColor="@color/colorblack"
         android:textSize="18sp" />
-
+    <ImageView
+        android:id="@+id/addNews"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="14dp"
+        android:src="@mipmap/add_news"
+        />
 
 </RelativeLayout>
     <RadioGroup

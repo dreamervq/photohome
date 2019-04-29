@@ -9,11 +9,11 @@ import cn.bmob.v3.datatype.BmobFile;
 public class News extends BmobObject {
     private List<String> comment;
     private String title;
-    private BmobFile mainpic;
+    private String mainpic;
     private BmobUser author;
     private Integer hots;
     private String bodytxt;
-    private List<BmobFile> bodypic;
+    private List<String> bodypic;
     private String types;
 
     public List<String> getComment() {
@@ -32,13 +32,6 @@ public class News extends BmobObject {
         this.title = title;
     }
 
-    public BmobFile getMainpic() {
-        return mainpic;
-    }
-
-    public void setMainpic(BmobFile mainpic) {
-        this.mainpic = mainpic;
-    }
 
     public BmobUser getAuthor() {
         return author;
@@ -64,11 +57,20 @@ public class News extends BmobObject {
         this.bodytxt = bodytxt;
     }
 
-    public List<BmobFile> getBodypic() {
+
+    public String getMainpic() {
+        return mainpic;
+    }
+
+    public void setMainpic(String mainpic) {
+        this.mainpic = mainpic;
+    }
+
+    public List<String> getBodypic() {
         return bodypic;
     }
 
-    public void setBodypic(List<BmobFile> bodypic) {
+    public void setBodypic(List<String> bodypic) {
         this.bodypic = bodypic;
     }
 
