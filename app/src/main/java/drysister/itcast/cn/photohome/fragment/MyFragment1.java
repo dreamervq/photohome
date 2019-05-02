@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -52,6 +53,7 @@ import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 import drysister.itcast.cn.photohome.ActivityBanner;
 import drysister.itcast.cn.photohome.GlideImageLoader;
+import drysister.itcast.cn.photohome.NewsDetailActivity;
 import drysister.itcast.cn.photohome.R;
 import drysister.itcast.cn.photohome.adapter.MylistAdapter;
 import drysister.itcast.cn.photohome.bean.Message;
@@ -59,7 +61,8 @@ import drysister.itcast.cn.photohome.bean.News;
 import drysister.itcast.cn.photohome.view.NestedView;
 
 
-public class MyFragment1 extends Fragment {
+public class
+MyFragment1 extends Fragment {
 
     private NestedView listViewid;
     private Context mContext;
@@ -72,8 +75,9 @@ public class MyFragment1 extends Fragment {
     private RefreshLayout myRefresh;
     private LinkedList<News> allNews;
     private MylistAdapter mAdapter;
-    private int newspage=0;
-NewsTask newsTask;
+    private int newspage = 0;
+    NewsTask newsTask;
+
     public MyFragment1() {
         // Required empty public constructor
     }
@@ -88,15 +92,27 @@ NewsTask newsTask;
         myRefresh = (RefreshLayout) view.findViewById(R.id.refresh_layout);
         initData();
         intitRefresh();
+        initItemClickEvent();
         getNews();
         unbinder = ButterKnife.bind(this, view);
         return view;
+    }
+//init news detail click listener
+    private void initItemClickEvent() {
+        listViewid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intentForDetail=new Intent(getActivity(), NewsDetailActivity.class);
+                intentForDetail.putExtra("newsInfo",allNews.get(position));
+                startActivity(intentForDetail);
+            }
+        });
     }
 
     //method get info of list from net
     private void getNews() {
         allNews = new LinkedList<News>();
-        newsTask=new NewsTask();
+        newsTask = new NewsTask();
         newsTask.execute();
     }
 
@@ -106,9 +122,9 @@ NewsTask newsTask;
         myRefresh.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
-                newspage=0;
+                newspage = 0;
                 allNews.clear();
-                newsTask=new NewsTask();
+                newsTask = new NewsTask();
                 newsTask.execute();
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
@@ -124,8 +140,8 @@ NewsTask newsTask;
             @Override
             public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
                 newspage++;
-                newsTask=new NewsTask();
-newsTask.execute();
+                newsTask = new NewsTask();
+                newsTask.execute();
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     @Override
@@ -175,7 +191,7 @@ newsTask.execute();
                     public void OnBannerClick(int position) {
                         Intent it1 = new Intent(getActivity(), ActivityBanner.class);
                         it1.putExtra("bannerUrl", bannerUrl.get(position));
-                        getActivity().overridePendingTransition(R.anim.inact,R.anim.outact);
+                        getActivity().overridePendingTransition(R.anim.inact, R.anim.outact);
                         startActivity(it1);
 
                         //Toast.makeText(getContext(), "你点了第" + (position + 1) + "张轮播图", Toast.LENGTH_SHORT).show();
@@ -202,6 +218,7 @@ newsTask.execute();
     public void setListViewHeightBasedOnChildren(ListView listView) {
         ListAdapter listAdapter = listView.getAdapter();
         if (listAdapter == null) {
+            Toast.makeText(mContext, "setListViewHeightBasedOnChildren  adapter is null!!", Toast.LENGTH_SHORT).show();
             return;
         }
         int totalHeight = 0;
@@ -262,17 +279,18 @@ newsTask.execute();
         protected Void doInBackground(Void... voids) {
             BmobQuery<News> query = new BmobQuery<>();
             //query data
-            query.setLimit(5).setSkip(5*newspage).order("-hots").findObjects(new FindListener<News>() {
+            query.include("author[username]");
+            query.setLimit(5).setSkip(5 * newspage).order("-hots").findObjects(new FindListener<News>() {
                 @Override
                 public void done(List<News> list, BmobException e) {
                     if (e == null) {
-                        if (list.size()==0){
+                        if (list.size() == 0) {
                             Toast.makeText(mContext, "没有更多了！！", Toast.LENGTH_SHORT).show();
                             return;
                         }
-                        if(newspage>0){
-                            Log.i("load more", "done: list size"+list.size());
-                            mAdapter.addItem(list);
+                        if (newspage > 0) {
+                            Log.i("load more", "done: list size" + list.size());
+                            //mAdapter.addItem(list);
                         }
                         int i = 0;
                         while (i < list.size()) {
@@ -283,7 +301,7 @@ newsTask.execute();
                     }
                     Log.i("allbmob", Integer.toString(allNews.size()));
 
-                    if (newspage==0){
+                    if (newspage == 0) {
 
                         mAdapter = new MylistAdapter(allNews, mContext);
                         listViewid.setAdapter(mAdapter);

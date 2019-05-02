@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/whiteBackground"
+    tools:context=".NewsDetailActivity">
+
+    <RelativeLayout
+        android:id="@+id/news_bar"
+        android:layout_width="match_parent"
+        android:layout_height="48dp">
+
+        <ImageView
+            android:id="@+id/backHome"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="8dp"
+            android:src="@mipmap/back" />
+
+        <TextView
+            android:id="@+id/txt_newsbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="图记"
+
+            android:textColor="@color/textColor"
+            android:textSize="18sp" />
+
+        <CheckBox
+            android:id="@+id/news_detail_like"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="13dp"
+            android:button="@null"
+            android:drawableLeft="@drawable/like_item"
+            android:text=""
+            android:textColor="@color/textColor"/>
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/info_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/news_bar">
+
+        <LinearLayout
+            android:id="@+id/listCotent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+
+            <TextView
+                android:id="@+id/newInfotext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="text"
+                android:textColor="@color/textColor"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/txtDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:textColor="@color/textColor"
+                android:textSize="11sp" />
+            <TextView
+                android:id="@+id/txtContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="test"
+                android:textColor="@color/textColor"
+                android:textSize="13sp" />
+
+            <ImageView
+                android:id="@+id/img1"
+                style="@style/imgdateil" />
+            <ImageView
+                android:id="@+id/img2"
+                style="@style/imgdateil" />
+            <ImageView
+                android:id="@+id/img3"
+                style="@style/imgdateil" />
+            <ImageView
+                android:id="@+id/img4"
+                style="@style/imgdateil" />
+            <ImageView
+                android:id="@+id/img5"
+                style="@style/imgdateil" />
+            <ImageView
+                android:id="@+id/img6"
+                style="@style/imgdateil" />
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</RelativeLayout>

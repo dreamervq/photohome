@@ -38,14 +38,12 @@
         </activity>
         <activity android:name=".releaseActivity" />
 
-
-
         <provider
             android:name="cn.bmob.v3.util.BmobContentProvider"
             android:authorities="drysister.itcast.cn.photohome.BmobContentProvider" />
 
         <activity android:name=".ActivityBanner" />
-
+        <activity android:name=".NewsDetailActivity"></activity>
     </application>
 
 </manifest>

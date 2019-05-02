@@ -43,6 +43,7 @@ public class MylistAdapter extends BaseAdapter {
 
     }
 public void  addItem(List<News> list){
+    Log.i("in adapter", "addItem: "+list.size());
         for(int i=0;i<list.size();i++){
             mData.add(list.get(i));
         }

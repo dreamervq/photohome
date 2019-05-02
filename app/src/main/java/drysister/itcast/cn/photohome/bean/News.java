@@ -1,12 +1,13 @@
 package drysister.itcast.cn.photohome.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 import cn.bmob.v3.BmobObject;
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobFile;
 
-public class News extends BmobObject {
+public class News extends BmobObject implements Serializable{
     private List<String> comment;
     private String title;
     private String mainpic;
