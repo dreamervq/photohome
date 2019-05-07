@@ -1,6 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/whiteBackground">
 
-</LinearLayout>
+    <RelativeLayout
+        android:id="@+id/lay_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="215dp"
+        android:layout_alignParentTop="true"
+        android:background="@mipmap/image_my_top_bg">
+
+        <LinearLayout
+            android:id="@+id/me_login"
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal">
+
+            <drysister.itcast.cn.photohome.RoundImageView
+                android:id="@+id/myRoundImg"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginLeft="39dp" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="4"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="请立即登录"
+                    android:id="@+id/meUsername"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/meEmail"
+                    android:text="登录后享受更多服务"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:src="@mipmap/htb_right" />
+        </LinearLayout>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lay_top_bar"
+        android:padding="12dp"
+        android:background="@mipmap/image_my_bottom_bg">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+                <TextView
+                 style="@style/item_me_fun"
+                    android:background="@drawable/item_text_border"
+                    android:drawableTop="@mipmap/icon_doc"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginRight="10dp"
+                    android:text="我的帖子"/>
+            <TextView
+                style="@style/item_me_fun"
+                android:background="@drawable/item_text_border"
+                android:drawableTop="@mipmap/icon_photo"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="35dp"
+                android:drawablePadding="1dp"
+                android:text="我的图册"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp">
+            <TextView
+                style="@style/item_me_fun"
+                android:background="@drawable/item_text_border"
+                android:drawableTop="@mipmap/icon_star"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="10dp"
+                android:text="我的收藏"/>
+            <TextView
+                style="@style/item_me_fun"
+                android:background="@drawable/item_text_border"
+                android:drawableTop="@mipmap/icon_setting"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="35dp"
+                android:drawablePadding="1dp"
+                android:text="设置"/>
+        </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

@@ -218,6 +218,10 @@ MyFragment1 extends Fragment {
     public void setListViewHeightBasedOnChildren(ListView listView) {
         ListAdapter listAdapter = listView.getAdapter();
         if (listAdapter == null) {
+            newspage = 0;
+            allNews.clear();
+            newsTask = new NewsTask();
+            newsTask.execute();
             Toast.makeText(mContext, "setListViewHeightBasedOnChildren  adapter is null!!", Toast.LENGTH_SHORT).show();
             return;
         }

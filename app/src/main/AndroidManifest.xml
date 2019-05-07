@@ -43,7 +43,9 @@
             android:authorities="drysister.itcast.cn.photohome.BmobContentProvider" />
 
         <activity android:name=".ActivityBanner" />
-        <activity android:name=".NewsDetailActivity"></activity>
+        <activity android:name=".NewsDetailActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".RegisterActivity"></activity>
     </application>
 
 </manifest>

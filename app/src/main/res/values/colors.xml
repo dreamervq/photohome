@@ -12,6 +12,9 @@
     <color name="textColor">#2d2d2d</color>
     <color name="whiteBackground">#ffffff</color>
     <color name="grayBackground">#eeeeee</color>
+    <color name="grayBgOla">#66eeeeee</color>
+    <color name="blackBgOla">#9b605f5f</color>
+    <color name="colorNewRed">#fd3363</color>
 
     <color name="nesBg">#ecedf1</color>
     <color name="editBg">#fff</color>

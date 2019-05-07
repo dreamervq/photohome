@@ -84,7 +84,7 @@ public class NewsDetailActivity extends AppCompatActivity {
             newInfotext.setText(tempBeanInfo.getTitle());
         }
         //set date and author
-        txtDate.setText(tempBeanInfo.getUpdatedAt().substring(0, 16)+"    by"+tempBeanInfo.getAuthor().getUsername());
+        txtDate.setText(tempBeanInfo.getUpdatedAt().substring(0, 16)+"    by__"+tempBeanInfo.getAuthor().getUsername());
         //set content
         if (tempBeanInfo.getBodytxt() != null) {
             txtContent.setText("\n    " + tempBeanInfo.getBodytxt() + "\n");
