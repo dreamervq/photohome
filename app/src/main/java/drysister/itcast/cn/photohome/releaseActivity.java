@@ -17,6 +17,7 @@ import com.wildma.pictureselector.PictureSelector;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,6 +27,8 @@ import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UploadFileListener;
 import drysister.itcast.cn.photohome.bean.News;
+import drysister.itcast.cn.photohome.bean.User;
+import drysister.itcast.cn.photohome.tool.SharedHelper;
 
 public class releaseActivity extends AppCompatActivity {
 
@@ -47,12 +50,15 @@ public class releaseActivity extends AppCompatActivity {
     ImageView contentPic6;
     private List<String> picUrlList;
     private List<ImageView> allImages;
+private SharedHelper sh;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_release);
         ButterKnife.bind(this);
+
         picUrlList = new ArrayList<>();
         allImages = new ArrayList<>();
         allImages.add(contentPic1);
@@ -61,6 +67,7 @@ public class releaseActivity extends AppCompatActivity {
         allImages.add(contentPic4);
         allImages.add(contentPic5);
         allImages.add(contentPic6);
+
     }
 
     @OnClick({R.id.backHome, R.id.clearAll, R.id.submitAll})
@@ -91,6 +98,12 @@ public class releaseActivity extends AppCompatActivity {
     }
 
     public void subAllMessage() {
+        sh=new SharedHelper(getApplicationContext());
+        Map<String,String > data=sh.read();
+        if (data.get("id")==null){
+            Toast.makeText(this, "请登录后重试吧", Toast.LENGTH_SHORT).show();
+            return;
+        }
         if (picUrlList.size() < 1) {
             Toast.makeText(this, "请添加最少一张图片", Toast.LENGTH_SHORT).show();
             return;
@@ -100,6 +113,9 @@ public class releaseActivity extends AppCompatActivity {
         myNews.setBodytxt(newContent.getText().toString());
         myNews.setHots(10);
         myNews.setTypes("1");
+        User tempuser=new User();
+        tempuser.setObjectId(data.get("id"));
+        myNews.setAuthor(tempuser);
         myNews.setMainpic(picUrlList.get(0));
         myNews.addAll("bodypic", picUrlList);
         myNews.save(new SaveListener<String>() {

@@ -61,7 +61,7 @@
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@+id/lay_top_bar"
         android:padding="12dp"
         android:background="@mipmap/image_my_bottom_bg">
@@ -71,46 +71,110 @@
             android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="110dp"
+            android:layout_height="0dp"
+            android:layout_weight="2"
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
-                <TextView
-                 style="@style/item_me_fun"
-                    android:background="@drawable/item_text_border"
-                    android:drawableTop="@mipmap/icon_doc"
-                    android:layout_marginLeft="35dp"
-                    android:layout_marginRight="10dp"
-                    android:text="我的帖子"/>
-            <TextView
+            <LinearLayout
                 style="@style/item_me_fun"
-                android:background="@drawable/item_text_border"
-                android:drawableTop="@mipmap/icon_photo"
+                android:orientation="vertical"
+                android:id="@+id/meFunMypos"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/item_text_border">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="3"
+                    android:src="@mipmap/icon_doc"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="2"
+                    android:text="我的帖子"
+                    android:textSize="17sp"/>
+            </LinearLayout>
+            <LinearLayout
+                style="@style/item_me_fun"
+                android:orientation="vertical"
+                android:id="@+id/meFunPic"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="35dp"
-                android:drawablePadding="1dp"
-                android:text="我的图册"/>
+                android:background="@drawable/item_text_border">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="3"
+                    android:src="@mipmap/icon_photo"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="2"
+                    android:text="我的图册"
+                    android:textSize="17sp"/>
+            </LinearLayout>
+            <!--<TextView-->
+                <!--style="@style/item_me_fun"-->
+                <!--android:background="@drawable/item_text_border"-->
+                <!--android:drawableTop="@mipmap/icon_photo"-->
+                <!--android:layout_marginLeft="10dp"-->
+                <!--android:layout_marginRight="35dp"-->
+                <!--android:drawablePadding="1dp"-->
+                <!--android:text="我的图册"/>-->
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="110dp"
+            android:layout_height="0dp"
+            android:layout_weight="2"
             android:orientation="horizontal"
             android:layout_marginTop="16dp">
-            <TextView
+            <LinearLayout
                 style="@style/item_me_fun"
-                android:background="@drawable/item_text_border"
-                android:drawableTop="@mipmap/icon_star"
+                android:orientation="vertical"
+                android:id="@+id/meFunLike"
                 android:layout_marginLeft="35dp"
                 android:layout_marginRight="10dp"
-                android:text="我的收藏"/>
-            <TextView
+                android:background="@drawable/item_text_border">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="3"
+                    android:src="@mipmap/icon_star"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="2"
+                    android:text="我的收藏"
+                    android:textSize="17sp"/>
+            </LinearLayout>
+            <LinearLayout
                 style="@style/item_me_fun"
-                android:background="@drawable/item_text_border"
-                android:drawableTop="@mipmap/icon_setting"
+                android:orientation="vertical"
+                android:id="@+id/meFunSetting"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="35dp"
-                android:drawablePadding="1dp"
-                android:text="设置"/>
+                android:background="@drawable/item_text_border">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="3"
+                    android:src="@mipmap/icon_setting"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="2"
+                    android:text="设置"
+                    android:textSize="17sp"/>
+            </LinearLayout>
+
         </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+            </LinearLayout>
         </LinearLayout>
     </RelativeLayout>
 </RelativeLayout>

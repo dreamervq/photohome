@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,7 @@ import cn.bmob.v3.listener.QueryListener;
 import drysister.itcast.cn.photohome.LoginActivity;
 import drysister.itcast.cn.photohome.R;
 import drysister.itcast.cn.photohome.RoundImageView;
+import drysister.itcast.cn.photohome.SettingActivity;
 import drysister.itcast.cn.photohome.bean.User;
 import drysister.itcast.cn.photohome.tool.SharedHelper;
 
@@ -48,7 +50,7 @@ public class MyFragment3 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment3, container, false);
-        RoundImageView imageView=(RoundImageView)view.findViewById(R.id.myRoundImg);
+        RoundImageView imageView = (RoundImageView) view.findViewById(R.id.myRoundImg);
         Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.defhead);
         imageView.setBitmap(bitmap);
         initData();
@@ -77,37 +79,70 @@ public class MyFragment3 extends Fragment {
 
     @OnClick(R.id.me_login)
     public void onLoginViewClicked() {
-        startActivity(loginIntent);
+        SharedHelper sh = new SharedHelper(getContext());
+        Map<String, String> data = sh.read();
+        if (data.get("id") != null&&data.get("id")!="") {
+            getUserInfo();
+        } else {
+            startActivity(loginIntent);
+        }
+
+
     }
 
 
     @Override
     public void onResume() {
         super.onResume();
+        getUserInfo();
+    }
+
+    public void getUserInfo() {
         SharedHelper sh = new SharedHelper(getContext());
         Map<String, String> data = sh.read();
-        if (data.get("id") != null) {
+        if (data.get("id") != "") {
             if (meUser == null) {
+                Log.i("userinfo is null", "getUserInfo: ");
                 BmobQuery<User> bmobQuery = new BmobQuery<>();
                 bmobQuery.getObject(data.get("id"), new QueryListener<User>() {
                     @Override
                     public void done(User user, BmobException e) {
                         if (e == null) {
-                            meUser.setObjectId(user.getObjectId());
                             meUsername.setText(user.getUsername());
                             meEmail.setText(user.getEmail());
                             Glide.with(getContext()).load(user.getHeader()).centerCrop().into(myRoundImg);
+                            Log.i("hi", "done: " + user.getUsername());
                         } else {
-
+                            Log.i("error in bmob", "done: " + e.getMessage());
                         }
                     }
                 });
+            } else {
+
             }
         } else {
-                meUser=null;
-                meUsername.setText("请立即登录");
-                meEmail.setText("登录后享受更多服务");
+            meUser = null;
+            meUsername.setText("请立即登录");
+            meEmail.setText("登录后享受更多服务");
         }
     }
 
+    @OnClick({R.id.meFunPic, R.id.meFunMypos, R.id.meFunLike, R.id.meFunSetting})
+    public void onFuncViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.meFunPic:
+                break;
+            case R.id.meFunMypos:
+                break;
+            case R.id.meFunLike:
+                break;
+            case R.id.meFunSetting:
+                openSetting();
+                break;
+        }
+    }
+
+    private void openSetting() {
+        startActivity(new Intent(getActivity(), SettingActivity.class));
+    }
 }

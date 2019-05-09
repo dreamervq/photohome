@@ -45,7 +45,9 @@
         <activity android:name=".ActivityBanner" />
         <activity android:name=".NewsDetailActivity" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".SettingActivity" />
+        <activity android:name=".MeInfoActivity"></activity>
     </application>
 
 </manifest>

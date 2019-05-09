@@ -29,4 +29,10 @@ public class SharedHelper {
         data.put("username",sp.getString("username",""));
         return  data;
     }
+    public void clearAllInfo(){
+        SharedPreferences sp=context.getSharedPreferences("ifsslogininfo",Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor=sp.edit();
+        editor.clear();
+        editor.commit();
+    }
 }
