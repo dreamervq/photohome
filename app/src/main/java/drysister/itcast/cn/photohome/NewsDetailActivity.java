@@ -105,6 +105,7 @@ public class NewsDetailActivity extends AppCompatActivity {
     @OnClick(R.id.backHome)
     public void onBackViewClicked() {
         finish();
+        overridePendingTransition(R.anim.inact, R.anim.outact);
     }
 
     @Override

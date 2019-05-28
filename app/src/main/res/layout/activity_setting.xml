@@ -46,6 +46,7 @@
             android:layout_height="15dp"
             android:background="@color/grayBackground"/>
         <LinearLayout
+            android:id="@+id/settingClear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -58,6 +59,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_weight="11"
+
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
                 android:layout_marginLeft="6dp"
@@ -66,11 +68,12 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_weight="3"
+                android:id="@+id/settingClearTxt"
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
                 android:gravity="right"
                 android:textColor="@color/textColor"
-                android:text="32.2M"/>
+                android:text="10.2M"/>
         </LinearLayout>
         <View
             android:layout_width="match_parent"

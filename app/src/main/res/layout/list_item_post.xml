@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/grayBackground"
+    android:paddingTop="6dp"
+    android:layout_height="114dp">
+    <ImageView
+        android:id="@+id/vhimg"
+        android:layout_width="161dp"
+        android:layout_height="108dp"
+        android:paddingLeft="1dp"
+        android:scaleType="centerCrop" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/whiteBackground"
+        android:orientation="vertical"
+        android:padding="6dp">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:lineHeight="26dp"
+            android:paddingLeft="11dp"
+            android:textColor="@color/textColor"
+            android:textSize="16sp" />
+        <TextView
+            android:id="@+id/hots"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="hots: 20"
+            android:drawableLeft="@mipmap/hotfire"
+            android:paddingLeft="11dp"
+            android:textColor="@color/textColor"
+            android:textSize="16sp" />
+        <TextView
+            android:id="@+id/updatetimes"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:paddingLeft="11dp"
+            android:text="time: 2019"
+            android:textColor="@color/textColor"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+</LinearLayout>

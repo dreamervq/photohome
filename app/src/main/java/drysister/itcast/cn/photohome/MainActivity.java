@@ -1,9 +1,12 @@
 package drysister.itcast.cn.photohome;
 
+import android.app.ActivityManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -40,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
     ImageView addNews;
     private MyFragmentPagerAdapter mAdapter;
     private SharedHelper sh;
-
+private long exitTime=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -126,5 +129,24 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
             return;
         }
 
+    }
+    public void exitApp(Context context){
+        ActivityManager manager=(ActivityManager)context.getSystemService(Context.ACTIVITY_SERVICE);
+        manager.killBackgroundProcesses(context.getPackageName());
+        System.exit(0);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode==KeyEvent.KEYCODE_BACK){
+            if ((System.currentTimeMillis()-exitTime)>1500){
+                    exitTime=System.currentTimeMillis();
+                Toast.makeText(this, "双击退出应用", Toast.LENGTH_SHORT).show();
+            }else{
+exitApp(this);
+            }
+            return false;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

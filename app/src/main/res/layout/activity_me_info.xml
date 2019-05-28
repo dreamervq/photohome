@@ -10,6 +10,8 @@
         android:id="@+id/news_bar"
         android:layout_width="match_parent"
         android:background="@color/colorWhite"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:layout_height="48dp">
 
         <ImageView
@@ -43,14 +45,14 @@
 
         android:layout_below="@+id/news_bar">
         <drysister.itcast.cn.photohome.RoundImageView
+            android:id="@+id/meHeadeImg"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:layout_gravity="center"
-            android:src="@mipmap/defhead"/>
+            android:layout_gravity="center" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="用户：username"
+            android:text="头像：点击修改"
             android:gravity="center"
             android:layout_marginTop="10dp"
             android:textSize="16sp"
@@ -62,7 +64,7 @@
             android:layout_marginBottom="5dp"
             android:textColor="@color/textColor"
             android:paddingLeft="8dp"
-            android:text="修改信息"/>
+            android:text="基本信息"/>
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
@@ -70,11 +72,104 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingLeft="8dp"
             android:orientation="horizontal">
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:src="@mipmap/user_personal"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textColor="@color/textColor"
+                android:gravity="center"
+                android:layout_marginLeft="8dp"
+                android:text="用户名："/>
+            <EditText
+                android:id="@+id/username"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingRight="22dp"
+                android:gravity="right"
+                android:maxLines="1"
+                android:text="cs1998"
+                android:textColor="@color/gray"/>
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/blackBgOla"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="8dp"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:scaleType="center"
+                android:src="@mipmap/contexthone"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textColor="@color/textColor"
+                android:gravity="center"
+                android:layout_marginLeft="8dp"
+                android:text="手机："/>
+            <EditText
+                android:id="@+id/phone_number"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingRight="22dp"
+                android:gravity="right"
+                android:maxLines="1"
+                android:text="17320362864"
+                android:textColor="@color/gray"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/blackBgOla"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="8dp"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:scaleType="center"
+                android:src="@mipmap/icon_email"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textColor="@color/textColor"
+                android:gravity="center"
+                android:layout_marginLeft="8dp"
+                android:text="邮箱："/>
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingRight="22dp"
+                android:gravity="right"
+                android:maxLines="1"
+                android:text="1732036@qqcom"
+                android:textColor="@color/gray"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/blackBgOla"/>
+        <Button
+            android:id="@+id/dosub"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="22dp"
+            android:gravity="center"
+            android:background="@drawable/btn_shap"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp"
+            android:text="确定修改"/>
     </LinearLayout>
 </RelativeLayout>

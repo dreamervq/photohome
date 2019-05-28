@@ -75,6 +75,7 @@ private SharedHelper sh;
         switch (view.getId()) {
             case R.id.backHome:
                 finish();
+                overridePendingTransition(R.anim.inact, R.anim.outact);
                 break;
             case R.id.clearAll:
                 clearAllMessage();

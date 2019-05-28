@@ -5,9 +5,9 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Map;
@@ -20,6 +20,8 @@ import drysister.itcast.cn.photohome.tool.SharedHelper;
 public class SettingActivity extends AppCompatActivity {
     @BindView(R.id.loginOut)
     Button loginOut;
+    @BindView(R.id.settingClearTxt)
+    TextView settingClearTxt;
     private SharedHelper sharedHelper;
 
     @Override
@@ -27,13 +29,13 @@ public class SettingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
         ButterKnife.bind(this);
-       notifyUserIsLogin();
+        notifyUserIsLogin();
     }
 
     private void notifyUserIsLogin() {
         sharedHelper = new SharedHelper(getApplicationContext());
         Map<String, String> data = sharedHelper.read();
-        if (data.get("id") != null&&data.get("id")!="") {
+        if (data.get("id") != null && data.get("id") != "") {
             loginOut.setEnabled(true);
             loginOut.setTextColor(Color.RED);
         } else {
@@ -48,6 +50,7 @@ public class SettingActivity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.backHome:
                 finish();
+                overridePendingTransition(R.anim.inact, R.anim.outact);
                 break;
             case R.id.loginOut:
                 clearUserSh();
@@ -58,14 +61,14 @@ public class SettingActivity extends AppCompatActivity {
     private void clearUserSh() {
         Map<String, String> data = sharedHelper.read();
         if (data.get("id") != null) {
-            AlertDialog.Builder builder=new AlertDialog.Builder(SettingActivity.this);
+            AlertDialog.Builder builder = new AlertDialog.Builder(SettingActivity.this);
             builder.setTitle("确定退出登录？");
             builder.setMessage("退出后将不能使用vip服务！");
             builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     sharedHelper.clearAllInfo();
-                    Map<String,String> data=sharedHelper.read();
+                    Map<String, String> data = sharedHelper.read();
                     notifyUserIsLogin();
                     Toast.makeText(SettingActivity.this, "用户退出，登录享受更多服务", Toast.LENGTH_SHORT).show();
                 }
@@ -76,7 +79,13 @@ public class SettingActivity extends AppCompatActivity {
                     return;
                 }
             });
-builder.show();
+            builder.show();
         }
+    }
+
+    @OnClick(R.id.settingClear)
+    public void onClearViewClicked() {
+settingClearTxt.setText("0.0M");
+        Toast.makeText(this, "已清理缓存", Toast.LENGTH_SHORT).show();
     }
 }

@@ -9,9 +9,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CircleCrop;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.Map;
 
@@ -23,6 +26,8 @@ import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.QueryListener;
 import drysister.itcast.cn.photohome.LoginActivity;
+import drysister.itcast.cn.photohome.MeInfoActivity;
+import drysister.itcast.cn.photohome.MyPostActivity;
 import drysister.itcast.cn.photohome.R;
 import drysister.itcast.cn.photohome.RoundImageView;
 import drysister.itcast.cn.photohome.SettingActivity;
@@ -50,9 +55,9 @@ public class MyFragment3 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment3, container, false);
-        RoundImageView imageView = (RoundImageView) view.findViewById(R.id.myRoundImg);
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.defhead);
-        imageView.setBitmap(bitmap);
+//        RoundImageView imageView = (RoundImageView) view.findViewById(R.id.myRoundImg);
+        //     Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.defhead);
+        //   myRoundImg.setBitmap(bitmap);
         initData();
         loginIntent = new Intent(getActivity(), LoginActivity.class);
         unbinder = ButterKnife.bind(this, view);
@@ -81,8 +86,9 @@ public class MyFragment3 extends Fragment {
     public void onLoginViewClicked() {
         SharedHelper sh = new SharedHelper(getContext());
         Map<String, String> data = sh.read();
-        if (data.get("id") != null&&data.get("id")!="") {
+        if (data.get("id") != null && data.get("id") != "") {
             getUserInfo();
+            startActivity(new Intent(getActivity(), MeInfoActivity.class));
         } else {
             startActivity(loginIntent);
         }
@@ -110,7 +116,11 @@ public class MyFragment3 extends Fragment {
                         if (e == null) {
                             meUsername.setText(user.getUsername());
                             meEmail.setText(user.getEmail());
-                            Glide.with(getContext()).load(user.getHeader()).centerCrop().into(myRoundImg);
+                            //设置图片圆角角度
+                            Glide.with(getContext()).
+                                    load(user.getHeader())
+                                    .apply(RequestOptions.bitmapTransform(new CircleCrop()))
+                                    .into(myRoundImg);
                             Log.i("hi", "done: " + user.getUsername());
                         } else {
                             Log.i("error in bmob", "done: " + e.getMessage());
@@ -124,6 +134,8 @@ public class MyFragment3 extends Fragment {
             meUser = null;
             meUsername.setText("请立即登录");
             meEmail.setText("登录后享受更多服务");
+            Bitmap bitmap= BitmapFactory.decodeResource(getResources(),R.mipmap.img_login_defhead);
+            myRoundImg.setBitmap(bitmap);
         }
     }
 
@@ -133,6 +145,7 @@ public class MyFragment3 extends Fragment {
             case R.id.meFunPic:
                 break;
             case R.id.meFunMypos:
+                openMyPost();
                 break;
             case R.id.meFunLike:
                 break;
@@ -140,6 +153,13 @@ public class MyFragment3 extends Fragment {
                 openSetting();
                 break;
         }
+    }
+
+    private void openMyPost() {
+        SharedHelper sh=new SharedHelper(getContext());
+        Map<String,String> data=sh.read();
+        if (data.get("id")!=null&&data.get("id")!=""){
+        startActivity(new Intent(getActivity(), MyPostActivity.class));}
     }
 
     private void openSetting() {

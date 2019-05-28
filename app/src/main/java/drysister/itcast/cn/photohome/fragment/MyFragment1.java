@@ -222,7 +222,7 @@ MyFragment1 extends Fragment {
             allNews.clear();
             newsTask = new NewsTask();
             newsTask.execute();
-            Toast.makeText(mContext, "setListViewHeightBasedOnChildren  adapter is null!!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, "正在加载...", Toast.LENGTH_SHORT).show();
             return;
         }
         int totalHeight = 0;

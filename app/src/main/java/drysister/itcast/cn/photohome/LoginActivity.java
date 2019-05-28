@@ -94,6 +94,7 @@ private Handler postHandler;
                             Log.i("username in sh", "run: "+data.get("username"));
                             Log.i("id in sh", "run: "+data.get("id"));
                             finish();
+                            overridePendingTransition(R.anim.inact, R.anim.outact);
                         }
                     },1000);
                 } else {
