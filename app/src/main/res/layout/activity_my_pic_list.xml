@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    tools:context=".MyPicListActivity">
+    <RelativeLayout
+        android:id="@+id/news_bar"
+        android:layout_width="match_parent"
+        android:background="@color/grayBgOla"
+        android:layout_height="48dp">
+
+        <ImageView
+            android:id="@+id/backHome"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="8dp"
+            android:src="@mipmap/back" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="我的图册"
+            android:textColor="@color/textColor"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/addPiclist"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:gravity="center_vertical"
+            android:text="+上传"
+            android:lineHeight="45dp"
+            android:textColor="@color/textColor"
+            android:textSize="16sp"
+            android:layout_marginRight="15dp"/>
+
+
+    </RelativeLayout>
+    <View
+        android:id="@+id/divider"
+        android:layout_below="@+id/news_bar"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray"
+        />
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_below="@+id/divider"
+    android:id="@+id/mypiclistview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"/>
+</RelativeLayout>

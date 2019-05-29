@@ -56,7 +56,8 @@
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/news_bar">
+        android:layout_below="@+id/news_bar"
+        android:id="@+id/mypostrefreash">
 <android.support.v7.widget.RecyclerView
     android:id="@+id/mypostview"
     android:layout_width="match_parent"

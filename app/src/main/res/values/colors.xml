@@ -6,6 +6,7 @@
     <color name="colorbar">#bfbfbf</color>
     <color name="colorblack">#000</color>
     <color name="colorWhite">#fff</color>
+    <color name="colornewWhite">#f2f2f2</color>
     <color name="colorred">#d81e06</color>
     <color name="colorgray">#e5595959</color>
     <color name="gray">#626263</color>

@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
@@ -27,6 +28,7 @@ import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.QueryListener;
 import drysister.itcast.cn.photohome.LoginActivity;
 import drysister.itcast.cn.photohome.MeInfoActivity;
+import drysister.itcast.cn.photohome.MyPicListActivity;
 import drysister.itcast.cn.photohome.MyPostActivity;
 import drysister.itcast.cn.photohome.R;
 import drysister.itcast.cn.photohome.RoundImageView;
@@ -143,6 +145,7 @@ public class MyFragment3 extends Fragment {
     public void onFuncViewClicked(View view) {
         switch (view.getId()) {
             case R.id.meFunPic:
+                openMyPicList();
                 break;
             case R.id.meFunMypos:
                 openMyPost();
@@ -155,13 +158,28 @@ public class MyFragment3 extends Fragment {
         }
     }
 
-    private void openMyPost() {
-        SharedHelper sh=new SharedHelper(getContext());
-        Map<String,String> data=sh.read();
-        if (data.get("id")!=null&&data.get("id")!=""){
-        startActivity(new Intent(getActivity(), MyPostActivity.class));}
+    private void openMyPicList() {
+        if (IsUserLogin()){
+            startActivity(new Intent(getActivity(), MyPicListActivity.class));
+        }
     }
 
+    private void openMyPost() {
+        if (IsUserLogin()){
+        startActivity(new Intent(getActivity(), MyPostActivity.class));
+        }
+        else {
+            Toast.makeText(getActivity(), "请登录...", Toast.LENGTH_SHORT).show();
+        }
+    }
+public Boolean IsUserLogin(){
+    SharedHelper sh=new SharedHelper(getContext());
+    Map<String,String> data=sh.read();
+    if (data.get("id")!=null&&data.get("id")!=""){
+        return true;
+       }
+       return  false;
+}
     private void openSetting() {
         startActivity(new Intent(getActivity(), SettingActivity.class));
     }

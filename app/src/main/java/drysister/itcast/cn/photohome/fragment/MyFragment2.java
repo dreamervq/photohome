@@ -23,9 +23,8 @@ public class MyFragment2 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fg_content, container, false);
-        TextView txt_content = (TextView) view.findViewById(R.id.tex_content);
-        txt_content.setText("第er个Fragment");
+        View view = inflater.inflate(R.layout.fragment2, container, false);
+
         return view;
     }
 

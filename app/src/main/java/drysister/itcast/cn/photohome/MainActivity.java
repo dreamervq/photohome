@@ -84,7 +84,7 @@ private long exitTime=0;
                 case PAGE_TWO:
                     rbPics.setChecked(true);
                     txtTopbar.setText("图库");
-                    addNews.setVisibility(View.VISIBLE);
+                    addNews.setVisibility(View.INVISIBLE);
                     break;
                 case PAGE_THREE:
                     rbMe.setChecked(true);
@@ -105,7 +105,7 @@ private long exitTime=0;
                 break;
             case R.id.rb_pics:
                 vpager.setCurrentItem(PAGE_TWO);
-                addNews.setVisibility(View.VISIBLE);
+                addNews.setVisibility(View.INVISIBLE);
                 txtTopbar.setText("图库");
                 break;
             case R.id.rb_me:

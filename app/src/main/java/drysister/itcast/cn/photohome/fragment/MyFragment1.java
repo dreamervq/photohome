@@ -103,7 +103,10 @@ MyFragment1 extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intentForDetail=new Intent(getActivity(), NewsDetailActivity.class);
-                intentForDetail.putExtra("newsInfo",allNews.get(position));
+                Bundle db=new Bundle();
+                db.putInt("type",3);
+                db.putSerializable("newsInfo",allNews.get(position));
+                intentForDetail.putExtras(db);
                 startActivity(intentForDetail);
             }
         });

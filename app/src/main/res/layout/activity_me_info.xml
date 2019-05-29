@@ -92,7 +92,7 @@
                 android:paddingRight="22dp"
                 android:gravity="right"
                 android:maxLines="1"
-                android:text="cs1998"
+                android:text=""
                 android:textColor="@color/gray"/>
         </LinearLayout>
         <View
@@ -123,7 +123,7 @@
                 android:paddingRight="22dp"
                 android:gravity="right"
                 android:maxLines="1"
-                android:text="17320362864"
+                android:text=""
                 android:textColor="@color/gray"/>
         </LinearLayout>
         <View
@@ -154,7 +154,7 @@
                 android:paddingRight="22dp"
                 android:gravity="right"
                 android:maxLines="1"
-                android:text="1732036@qqcom"
+                android:text=""
                 android:textColor="@color/gray"/>
         </LinearLayout>
         <View

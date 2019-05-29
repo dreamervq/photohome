@@ -33,12 +33,13 @@
 
         <CheckBox
             android:id="@+id/news_detail_like"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="23px"
+            android:layout_height="23px"
+           android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:layout_marginRight="13dp"
             android:button="@null"
-            android:drawableLeft="@drawable/like_item"
+
             android:text=""
             android:textColor="@color/textColor"/>
 

@@ -49,7 +49,8 @@
         <activity android:name=".RegisterActivity" />
         <activity android:name=".SettingActivity" />
         <activity android:name=".MeInfoActivity" />
-        <activity android:name=".MyPostActivity"></activity>
+        <activity android:name=".MyPostActivity" />
+        <activity android:name=".MyPicListActivity"></activity>
     </application>
 
 </manifest>

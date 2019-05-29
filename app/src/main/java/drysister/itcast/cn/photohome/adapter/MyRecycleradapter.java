@@ -73,7 +73,9 @@ public class MyRecycleradapter extends RecyclerView.Adapter<MyRecycleradapter.My
         holder.itemView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "click on "+holder.getPosition(), Toast.LENGTH_SHORT).show();
+               if (onClickListener!=null){
+                   onClickListener.onClick(holder.itemView,holder.getLayoutPosition());
+               }
 
             }
         });
@@ -100,8 +102,9 @@ public class MyRecycleradapter extends RecyclerView.Adapter<MyRecycleradapter.My
             updatetimes=itemView.findViewById(R.id.updatetimes);
         }
     }
-    interface OnClickListener{
+    public interface OnClickListener{
         void onClick(View itemView,int position);
         void onLongClick(View itemView,int position);
     }
+
 }
